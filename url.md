@@ -1,15 +1,26 @@
 # url의 구성을 알아보자
 
+<br /><br />
+
+* 구성 요소
+
+<br />
+
+1. 형식
+
 ```
-1) protocol
-2) host
-3) port
-4) resource path
-5) query
+protocol(http, https) / host(www.example.com) / port(443) / resource path(/path/to/resource) / query(?a=b&x=y)
 ```
+
+<br />
+
+2. 예시
+
+
 ```
-ex) 1. https:// + 2. www.test.com + 3. :443 + 4. /path/to/resource 5. ?a=b&x=y
+https://www.example.com:443/path/to/resource?a=b&x=y
 ```
+
 |protocol|host|port|resource path|query|
 |---|---|---|---|---|
 |https://|www.test.com|:443|/path/to/resource|?a=b&x=y|
