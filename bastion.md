@@ -1,14 +1,43 @@
-# Bastion에 대해 알아보자.
+# Bastion
 
-<br /><br />
+<br />
+<br />
 
-* Bastion을 사용한 접속 방법
+* Bastion 사용이유
+---
 
-1. 관리중인 모든 instance의 인바운드 규칙을 단하나의 IP만 접속이 가능하게 만든다.
-(여기서는 Bastion이라는 Gate way 역할을 하는 서버를 예시로 한다.)
+```
+주로 AWS, Azure, GCP와 같은 클라우드 서비스에서는
+Bastion 서버를 VPC (Virtual Private Cloud)와 같은 프라이빗 네트워크에 배치하여,
+외부에서 내부 리소스에 안전하게 접근할 수 있도록 한다.
+```
 
-2. puTTY에서 Bastion의 Tunnels 설정에는 Port Forwarding을 할수있도록 Forwarded port와 Instance의 Private IP를 등록해 놓는다.
+<br />
+<br />
+<br />
+<br />
 
-3. puTTY를 이용하여 Gate way 역할을 하는 Bastion서버의 Public서버로 접속한다. (Public IP는 기본적으로 유동이기 때문에 "탄력적 IP"를 사용한다.)
+1. 전체 흐름
 
-4. Gate Way 역할을 하는 Bastion 서버가 열린 상태에서, 접속하고 싶은 서버에 접속한다.
+```
+(외부 사용자)
+     |
+     v
+[퍼블릭 인터넷]
+     |
+     v
+[Bastion 서버 (Public IP)]
+     | (SSH 접속)
+     v
+[프라이빗 네트워크]
+     |
+     v
+[내부 서버 (Private IP)]
+```
+
+<br />
+
+```
+위와 같이 외부와 내부 네트워크를 연결하는 중계 서버로 사용되며,
+외부에서 직접적인 접근을 제한하고, 내부 시스템으로의 안전한 접속을 보장하는 역할을 한다.
+```
